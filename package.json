@@ -1,12 +1,9 @@
 {
   "name": "aether-contact-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "api/contact.js",
   "type": "module",
-  "scripts": {
-    "start": "node api/contact.js"
-  },
   "dependencies": {
-    "nodemailer": "^6.9.1"
+    "nodemailer": "^6.9.3"
   }
 }
