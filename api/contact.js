@@ -2,7 +2,13 @@ import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
   // Agregamos CORS headers manualmente
-  res.setHeader('Access-Control-Allow-Origin', 'https://www.aetherdesign.cl');
+  const allowedOrigins = ['https://aetherdesign.cl', 'https://www.aetherdesign.cl'];
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
