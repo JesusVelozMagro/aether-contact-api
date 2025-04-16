@@ -1,19 +1,20 @@
+// api/contact.js
+import nodemailer from 'nodemailer';
+
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { name, email, message } = req.body;
-
-    const nodemailer = require('nodemailer');
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: 'jesusveloz76@gmail.com',
-        pass: 'atik oycj afzq ygjm',
+        pass: 'atik oycj afzq ygjm', // tu app password
       },
     });
 
     const mailOptions = {
-      from: email,
+      from: 'jesusveloz76@gmail.com',
       to: 'jesusveloz76@gmail.com',
       subject: `Mensaje de ${name}`,
       text: `Nombre: ${name}\nCorreo: ${email}\nMensaje:\n${message}`,
@@ -26,6 +27,7 @@ export default async function handler(req, res) {
       res.status(500).json({ success: false, error: error.message });
     }
   } else {
+    // No permite otros métodos, solo POST
     res.status(405).json({ error: 'Método no permitido' });
   }
 }
